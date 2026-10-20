@@ -46,12 +46,13 @@ the APK. Only the port's own helper is embedded; the game's DLLs stay local.
 
 ## Validation
 
-Install the developer dependencies into the same native Python environment:
+Run Python modules from the project root. Install the developer dependencies
+into the same native Python environment:
 
 ```powershell
 python -m pip install -r requirements-dev.txt
-python tools/format.py --check
-python tools/check.py --apk "C:\Games\JumpingFinnTurbo.apk"
+python -m tools.format --check
+python -m tests.run --apk "C:\Games\JumpingFinnTurbo.apk"
 ```
 
 The checks read the built ELFs and run ARM code with modeled system boundaries.
@@ -60,15 +61,35 @@ See [TESTING.md](TESTING.md) for coverage and hardware limitations.
 ## Packaging
 
 ```powershell
-python tools/package.py
+python -m tools.package
 ```
 
 This creates `dist/Finn-NX-<version>-SD.zip`, `dist/SD-ready/` and
 `dist/SHA256SUMS.txt`. Public archives contain the NRO, instructions and license
 notices. They never include an APK by default.
 
-For a personal SD copy only, `python tools/package.py --local-apk "C:\Games\JumpingFinnTurbo.apk"`
+For a personal SD copy only, `python -m tools.package --local-apk "C:\Games\JumpingFinnTurbo.apk"`
 creates a separately named `-local-SD.zip`. Do not upload that archive.
 
 Dependency and compiler versions affect code generation. The timestamped build
 identifier also changes output hashes; byte-identical builds are not promised.
+
+## Build tools
+
+The Python files in `tools/` are used by the supported build or development
+workflow. None need to be copied to the SD card.
+
+| Module | Purpose |
+| --- | --- |
+| `tools.build_controls` | Compile the port's C# helper against the verified APK |
+| `tools.fetch_deps` | Download and verify the pinned libnx32 and mesa32 archives |
+| `tools.elf32_to_nso` | Package the ARM32 ELF; Windows devkitPro's converter accepts only AArch64 |
+| `tools.build_forwarder` | Generate the NRO's HOME forwarder templates and license notices |
+| `tools.verify_build` | Check the compiled payload, NRO, metadata and embedded files |
+| `tools.package` | Create the public SD archive and checksums |
+| `tools.format` | Format or check the maintained sources |
+| `tools.project`, `tools.licenses` | Shared metadata, APK validation and license text |
+
+`runtime/tools/gen_imports.py` checks `source/imports.c` against the cached symbol
+list in `tools/imports_needed.txt` and the rules in `tools/imports.cfg`. These
+are build inputs, not game binaries. The regression suite lives in `tests/`.

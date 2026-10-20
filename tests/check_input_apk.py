@@ -8,8 +8,8 @@ import struct
 from elftools.elf.elffile import ELFFile
 from unicorn import Uc, UC_ARCH_ARM, UC_MODE_ARM, UC_HOOK_CODE
 from unicorn import arm_const as R
-from arm32 import Arm32
-from check_kuser import ROOT, PAYLOAD, SCRATCH, STOP, STACK, load, put, word, check
+from tests.arm32 import Arm32
+from tests.check_kuser import ROOT, PAYLOAD, SCRATCH, STOP, STACK, load, put, word, check
 
 REGS = [R.UC_ARM_REG_R0, R.UC_ARM_REG_R1, R.UC_ARM_REG_R2, R.UC_ARM_REG_R3]
 DATA = SCRATCH + 0x100000

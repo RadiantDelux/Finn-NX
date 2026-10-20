@@ -12,8 +12,8 @@
  *    handler records where its stack is, acknowledges on GC_suspend_ack_sem,
  *    and sleeps in sigsuspend until the restart signal. Horizon has no signals,
  *    so the handler's work is done FOR the thread, from the collector, exactly
- *    as the handler in this libmono does it (read out of GC_suspend_handler by
- *    tools/offsets/derive_offsets.py):
+ *    as GC_suspend_handler in the supported libmono does it (the offsets and
+ *    instruction guards are recorded in dcr_offsets.h):
  *
  *      suspend (30):  if me->stop_info.last_stop_count == GC_stop_count: done
  *                     (a retry for a thread already stopped); otherwise pause

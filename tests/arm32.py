@@ -1,20 +1,7 @@
 #!/usr/bin/env python3
-"""
-arm32.py -- AArch32 ELF analysis helpers for deriving offsets from the game's
-own stripped .so files (Unity 2017.4.17f1, armeabi-v7a, Mono backend).
+"""Read ARM32 ELF symbols and instructions for CPU regression checks.
 
-This is the 32-bit counterpart of the arm64 tooling the Drive Ahead port uses.
-Everything here is READ-ONLY analysis of a shared object: it never writes to the
-binary. derive_offsets.py builds on it to emit source/dcr_offsets.h.
-
-The one idea that makes the whole approach work: the game ships stripped .so
-files, but the functions we need to hook or patch have a fixed shape (a Time
-getter is "call GetTimeManager, load one field, return"; WaitVSync is
-"lock / while(counter<target) cond_wait / unlock"). We locate them structurally
--- by the strings, PLT calls and constants they carry -- rather than by symbol,
-so the same script re-derives correct addresses after a game update.
-
-Requires: pyelftools, capstone.
+Requires pyelftools and capstone. Input libraries are never modified.
 """
 
 import struct

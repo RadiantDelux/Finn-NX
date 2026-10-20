@@ -5,9 +5,9 @@ import re
 import subprocess
 from pathlib import Path
 
-from build_forwarder import VENDOR_SHA
-from licenses import license_notices
-from project import APK_SHA256, ROOT, VERSION
+from tools.build_forwarder import VENDOR_SHA
+from tools.licenses import license_notices
+from tools.project import APK_SHA256, ROOT, VERSION
 
 
 def check(ok, message):

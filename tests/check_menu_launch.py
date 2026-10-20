@@ -15,8 +15,8 @@ from unicorn.arm64_const import (
     UC_ARM64_REG_SP,
     UC_ARM64_REG_PC,
 )
-from check_kuser import ROOT, load, check
-from build_forwarder import TITLE_ID as AUTO_TID
+from tests.check_kuser import ROOT, load, check
+from tools.build_forwarder import TITLE_ID as AUTO_TID
 
 BASE, TEMP, DATA = 0x10000000, 0x40000000, 0x50000000
 STOP, STACK = TEMP + 0x1000, TEMP + 0xF000

@@ -8,7 +8,7 @@ import hashlib
 import json
 import struct
 from pathlib import Path
-from licenses import license_notices
+from tools.licenses import license_notices
 
 ROOT = Path(__file__).resolve().parent.parent
 NRO_PATH = "/switch/finn_nx/finn_nx.nro"

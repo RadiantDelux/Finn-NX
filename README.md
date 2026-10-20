@@ -1,135 +1,136 @@
 <p align="center">
-  <img src="docs/assets/icon.png" width="192" alt="Jumping Finn Turbo icon">
+  <img src="docs/assets/icon.png" width="176" alt="Jumping Finn Turbo">
 </p>
 
 <h1 align="center">Finn NX</h1>
-<p align="center">Jumping Finn Turbo for Nintendo Switch homebrew</p>
+<p align="center">Jumping Finn Turbo / Finn Saltarín for Nintendo Switch</p>
 <p align="center">
-  <a href="https://github.com/RadiantDelux/Finn-NX/releases">Downloads</a> ·
+  <a href="https://github.com/RadiantDelux/Finn-NX/releases/latest"><b>Download</b></a> ·
   <a href="README.es.md">Español</a> ·
-  <a href="docs/BUILDING.md">Build from source</a> ·
+  <a href="#controls">Controls</a> ·
   <a href="https://github.com/RadiantDelux/Finn-NX/issues">Report an issue</a>
 </p>
 
-Finn NX runs the **Android 1.1.6** release of Jumping Finn Turbo on Nintendo
-Switch, using the original ARMv7 libraries and Unity/Mono scripts. Graphics
-use **OpenGL ES through Mesa/Nouveau**. Touch input and controller input are supported.
+An unofficial native port of **Jumping Finn Turbo**, based on the **Android 1.1.6**
+release. Port by [RadiantDelux](https://github.com/RadiantDelux).
 
-The download contains the homebrew launcher and runtime. **Supply your own
-compatible APK; the game is not included.** This is an unofficial community port.
+## Features
+
+- Original ARMv7 game code runs on the Switch CPU through the android32 runtime.
+- OpenGL ES graphics through Mesa/Nouveau.
+- Touch controls in handheld mode and controller support for docked play.
+- Automatic HOME forwarder setup from the NRO, including launch from Album/hbmenu.
+
+**The game is not included. You must supply your own compatible APK.**
 
 ## Requirements
 
 - Nintendo Switch running Atmosphère, configured to install and launch homebrew forwarders.
-- Access to hbmenu or sphaira and writable space on the SD card.
-- The exact Android build below. The iOS IPA is not supported by this port.
+- hbmenu or sphaira, plus writable space on the SD card.
+- **Jumping Finn Turbo for Android, version 1.1.6**, with these exact details:
 
-| Field | Required value |
+| APK | Required value |
 | --- | --- |
-| Game | Jumping Finn Turbo / Finn Saltarín |
-| Android version | **1.1.6** |
 | Package | `com.turner.jft` |
-| Architecture | `armeabi-v7a` |
-| Engine | Unity `4.3.0f4`, Mono |
-| APK size | 50,439,654 bytes |
-
-**APK SHA-256**
+| Architecture | `armeabi-v7a` (32-bit ARM) |
+| File size | 50,439,654 bytes |
+| SHA-256 | See below |
 
 ```text
 7b3c4d0058c8f613b0a696fbbdd96b4fd0162e75d3ee85da11d9f38cf768d040
 ```
 
-Any `.apk` filename is accepted, including an uppercase extension. The launcher
-and runtime scan the game directory and validate the whole file by SHA-256.
-A different version, repack or modified APK will be rejected.
+The filename can be anything ending in `.apk`, including uppercase. Finn NX scans
+its folder and checks the full SHA-256. Other versions and modified APKs are rejected.
 
-To check your copy on Windows:
+<details>
+<summary>Check your APK on Windows</summary>
 
 ```powershell
 Get-FileHash -Algorithm SHA256 "C:\Games\JumpingFinnTurbo.apk"
 ```
 
+</details>
+
 ## Installation
 
-1. Download `finn_nx.nro` or the SD archive from [Releases](https://github.com/RadiantDelux/Finn-NX/releases).
-2. Put the NRO and your compatible APK in `sd:/switch/finn_nx/`:
+1. Download **Finn-NX-0.1.11-SD.zip** from [the latest release](https://github.com/RadiantDelux/Finn-NX/releases/latest) and extract it to the SD root.
+2. Add your compatible APK to the same folder as the NRO:
 
    ```text
-   switch/
-   └── finn_nx/
-       ├── finn_nx.nro
-       └── your-game.apk
+   sd:/switch/finn_nx/
+   ├── finn_nx.nro
+   └── your-game.apk
    ```
 
-3. Open `finn_nx.nro` from Album/hbmenu. It reuses an installed Finn forwarder,
-   or installs its own HOME icon and requests a launch. No separate NSP download is needed.
-4. The first game launch extracts the native libraries from your APK. Let it finish.
-   Later launches can use the HOME icon directly.
+3. Open **Finn NX** from Album/hbmenu. The NRO installs or reuses its HOME forwarder and starts the game.
+4. Let the first launch finish extracting the native libraries. Afterwards, launch from the HOME icon.
 
-The NRO is a 64-bit launcher; the game runs as a **32-bit application** after
-handoff. Opening it from Album does not run Unity inside the applet.
+You can also download the standalone `finn_nx.nro` and create the folder yourself.
+A separate NSP is not needed. The game runs as a full **32-bit application** after
+handoff; Unity does not run inside the Album applet.
 
-If automatic setup is unavailable on your configuration, install the NRO with
-**Install Forwarder** in sphaira, then open that icon from HOME.
+If automatic installation fails, use **Install Forwarder** in sphaira on the NRO,
+then open its HOME icon.
 
 ## Controls
 
 | Input | Action |
 | --- | --- |
+| Touchscreen | Original touch controls |
 | **Y** | Jake's airborne kick |
 | **X** | Recovery / bounce |
-| **B** | Initial launch gauge: press once to start, again to kick |
-| **B**, during flight | Tap actions for meteorite, rainbow, birds and ice; hold to repeat |
-| **L** or **ZL** | Hit a visible penguin on the left |
-| **R** or **ZR** | Hit a visible penguin on the right |
-| **−** | Restart the current run, like the original restart button; keeps saved progress |
-| **+** | Pause / resume through the game's pause menu |
+| **B** | Initial kick: press once to start the gauge, again to kick |
+| **B** during flight | Tap actions for meteorite, rainbow, birds and ice; hold to repeat |
+| **L / ZL** | Hit a visible penguin on the left |
+| **R / ZR** | Hit a visible penguin on the right |
+| **−** | Restart the current run, keeping saved progress |
+| **+** | Pause menu |
 | Left stick | Move and show the pink pointer |
-| **A** | Click or drag at the pointer, including menus |
-| Right-stick click | Android Back |
-| **L + R + +** | Exit |
-| Touchscreen | Original touch controls in handheld mode |
+| **A** | Click / drag with the pointer, including menus |
+| Right-stick click | Back |
+| **L + R + Plus** | Exit |
 
-Kick and recovery respect the original availability and cooldowns. Other buttons
-hide the pointer; **A** keeps it visible while clicking. Moving the stick shows it again.
-A restart reloads the current scene and may briefly display its normal loading transition.
+Actions respect the game's availability and cooldowns. Other buttons hide the
+pointer; **A** keeps it visible. Move the stick to show it again.
 
-## Updating and saves
+## Updating and support
 
-Replace `sd:/switch/finn_nx/finn_nx.nro` and open Finn again. The runtime updates
-the ARM32 program for the existing HOME icon. Keep your APK and the `data/` directory;
-saved progress lives under `sd:/switch/finn_nx/data/`.
+Replace `sd:/switch/finn_nx/finn_nx.nro` and open Finn again. **Keep your APK and
+`data/` folder**; saves are stored in `sd:/switch/finn_nx/data/`.
 
-The displayed NRO and generated forwarder author is **RadiantDelux**. HOME icon,
-title and author metadata are copied when the forwarder is installed; reinstall
-an existing forwarder to refresh those fields after an update.
+The NRO and generated forwarder display **RadiantDelux** as author. To refresh
+an older HOME icon's author or artwork, remove that forwarder through software
+management and open the updated NRO to reinstall it.
 
-The automatic forwarder uses homebrew title ID `059669A728222000`. Its generated
-program override is `sd:/atmosphere/contents/059669A728222000/exefs.nsp`.
-`title_id.txt` records the forwarder IDs associated with this installation.
-
-## Troubleshooting
-
-| Symptom | Check |
-| --- | --- |
-| APK missing or rejected | Directory, Android version and the exact SHA-256 above |
-| Forwarder installation or handoff fails | `sd:/switch/finn_nx/forwarder-install.log`; try the HOME icon or sphaira fallback |
-| Black screen or crash | `sd:/switch/finn_nx/debug.log` and `crash.log`, if generated |
-| A controller action does nothing | Check that the corresponding original action is currently available |
-
-Include the port version, launch mode, Atmosphère version and relevant logs in a
+For setup failures, check `forwarder-install.log` in the game folder. For a black
+screen or crash, check `debug.log` and `crash.log`, if generated. Include the port
+version, Atmosphère version, launch method and relevant logs in a
 [bug report](https://github.com/RadiantDelux/Finn-NX/issues/new?template=bug_report.yml).
-Do not attach your APK or saves. See [testing notes](docs/TESTING.md) for what local checks cover.
 
-## Development and credits
+## Building from source
 
-- [Build instructions](docs/BUILDING.md), [architecture](docs/ARCHITECTURE.md), [changelog](CHANGELOG.md).
-- [Publication review and resolved findings](docs/REVIEW.md).
-- Based on [aks796/android32](https://github.com/aks796/android32) and the Unity/Mono
-  integration from [aks796/dcr_sea_nx](https://github.com/aks796/dcr_sea_nx).
-- AArch32 support builds on xerpi/vita2hos, libnx32 and Mesa. The forwarder uses nx-hbloader.
-- Full attribution, versions and licenses: [THIRD_PARTY.md](THIRD_PARTY.md).
+The supported build host is Windows with PowerShell, devkitPro and native Python 3.10+:
 
-Port and runtime code are distributed under the [MIT license](LICENSE), with
-third-party notices retained. The icon, game assets, names and trademarks remain
-the property of their respective owners.
+```powershell
+git clone https://github.com/RadiantDelux/Finn-NX.git
+cd Finn-NX
+./build.ps1 -ApkPath "C:\Games\JumpingFinnTurbo.apk"
+```
+
+See [the build guide](docs/BUILDING.md) for the toolchain and packaging steps.
+Build tools live in `tools/`; regression checks live in `tests/`.
+[Architecture](docs/ARCHITECTURE.md) · [Testing](docs/TESTING.md) · [Contributing](CONTRIBUTING.md)
+
+## Credits and license
+
+- **RadiantDelux** — Finn NX port, controls and HOME forwarder integration.
+- **aks796** — [android32](https://github.com/aks796/android32), [dcr_sea_nx](https://github.com/aks796/dcr_sea_nx), libnx32 and mesa32.
+- **xerpi**, **TheOfficialFloW**, **fgsfds** and **Switchbrew** — AArch32, native loader and libnx work.
+- **Mesa/Nouveau contributors** — graphics support; **nx-hbloader contributors** — forwarder loader.
+- **Cartoon Network / Turner and the original creators** — game and artwork.
+
+Source code is distributed under the [MIT license](LICENSE), with dependency
+notices retained in [THIRD_PARTY.md](THIRD_PARTY.md) and the release packages.
+Game assets, names and trademarks belong to their respective owners. Finn NX is
+an unofficial community project.

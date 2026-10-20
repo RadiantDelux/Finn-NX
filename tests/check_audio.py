@@ -26,8 +26,8 @@ from unicorn.arm_const import (
     UC_ARM_REG_PC,
     UC_ARM_REG_SP,
 )
-from arm32 import Arm32
-from check_kuser import ROOT, PAYLOAD, GAME, SCRATCH, STOP, STACK, load, put, word, check
+from tests.arm32 import Arm32
+from tests.check_kuser import ROOT, PAYLOAD, GAME, SCRATCH, STOP, STACK, load, put, word, check
 
 REGS = [UC_ARM_REG_R0, UC_ARM_REG_R1, UC_ARM_REG_R2, UC_ARM_REG_R3]
 

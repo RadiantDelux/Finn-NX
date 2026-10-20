@@ -12,8 +12,8 @@ from elftools.elf.elffile import ELFFile
 from unicorn import Uc, UcError, UC_ARCH_ARM64, UC_MODE_ARM, UC_HOOK_CODE
 from unicorn import arm64_const as R
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
-from check_kuser import ROOT, load, check
-from build_forwarder import TITLE_ID
+from tests.check_kuser import ROOT, load, check
+from tools.build_forwarder import TITLE_ID
 
 BASE, TEMP, HEAP = 0x10000000, 0x40000000, 0x50000000
 STOP, STACK = TEMP + 0x1000, TEMP + 0xF000

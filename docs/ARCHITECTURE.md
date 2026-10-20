@@ -33,6 +33,12 @@ the console. No console keys, tickets or commercial game program are bundled.
 | `launcher/source/` | APK validation, installation and HOME handoff |
 | `runtime/` | Vendored android32 runtime, with documented local fixes |
 | `vendor/` | miniz and the pinned homebrew forwarder loader |
+| `tools/` | Build, packaging, metadata and formatting tools |
+| `tests/` | CPU, managed and source-distribution regression checks |
+
+The automatic forwarder uses homebrew title ID `059669A728222000`. Its ARM32
+program override is `sd:/atmosphere/contents/059669A728222000/exefs.nsp`;
+`title_id.txt` in the game folder records associated HOME title IDs.
 
 ## Compatibility details
 

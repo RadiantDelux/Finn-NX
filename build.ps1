@@ -15,9 +15,9 @@ Push-Location $PSScriptRoot
 try {
     & $PythonExe -c 'import os,sys; assert os.name == "nt" and sys.version_info >= (3,10), "Use native Windows Python 3.10+ via -PythonExe"'
     if ($LASTEXITCODE) { throw 'Select native Windows Python 3.10+ with -PythonExe.' }
-    & $PythonExe tools/build_controls.py --apk $apk
+    & $PythonExe -m tools.build_controls --apk $apk
     if ($LASTEXITCODE) { throw 'Managed control helper compilation failed.' }
-    & $PythonExe tools/fetch_deps.py --dest $cache
+    & $PythonExe -m tools.fetch_deps --dest $cache
     if ($LASTEXITCODE) { throw 'Dependency preparation failed.' }
     # MSYS2 translates the Windows paths inside the shared shell build.
     $script = Join-Path $PSScriptRoot 'tools\build_switch.sh'

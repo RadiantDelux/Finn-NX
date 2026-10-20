@@ -5,7 +5,7 @@ import os
 import subprocess
 import zipfile
 from pathlib import Path
-from project import ROOT as root, validate_apk
+from tools.project import ROOT as root, validate_apk
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--apk", type=Path, required=True)

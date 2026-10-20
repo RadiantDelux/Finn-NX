@@ -8,8 +8,8 @@ import hashlib
 import json
 import struct
 from pathlib import Path
-from licenses import license_notices
-from project import VERSION
+from tools.licenses import license_notices
+from tools.project import VERSION
 
 root = Path(__file__).resolve().parent.parent
 

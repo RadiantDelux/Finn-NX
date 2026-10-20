@@ -36,9 +36,9 @@ if ! make -C launcher finn_nx.nacp > build/launcher.log 2>&1; then
     tail -n 60 build/launcher.log
     exit 1
 fi
-python tools/build_forwarder.py
+python -m tools.build_forwarder
 if ! make -C launcher -j4 >> build/launcher.log 2>&1; then
     tail -n 60 build/launcher.log
     exit 1
 fi
-python tools/verify_build.py
+python -m tools.verify_build

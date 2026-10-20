@@ -19,8 +19,8 @@
 # or run in an emulator directly (a 32-bit program cannot be an NRO:
 # hbloader is 64-bit) -- and $(TARGET).build, its build number.
 #
-# Builds with devkitARM + libnx32 inside the toolchain container: the port's
-# ./build.sh runs runtime/tools/docker_build.sh, which runs make there.
+# Finn NX builds with devkitARM + libnx32 through build.ps1 and
+# tools/build_switch.sh. See docs/BUILDING.md for the supported toolchain.
 #
 # What a port may set (before the include, unless marked):
 #   TARGET                 the program's name (also PORT_PAYLOAD_NAME in C,

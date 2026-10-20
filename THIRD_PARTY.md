@@ -25,13 +25,18 @@ Switch Mesa ecosystem. Finn NX currently uses OpenGL ES, not Vulkan.
 - `runtime/` retains the port's atomic helper activation, condition-variable
   configuration, diagnostic changes and Windows ELF32-to-NSO packaging support.
 - `runtime/source/dcr_exefs.h` now uses overflow-safe ExeFS/NPDM bounds checks.
+- Only the runtime sources, build inputs and shared launcher used by Finn NX are
+  vendored. Generic port examples, migration notes and unused build/export
+  scripts are omitted; the full documentation remains available upstream.
+- Mono offsets and instruction guards for the supported APK are checked in as
+  `source/dcr_offsets.h`; the retired analysis scripts are not part of the build.
 - Maintained port sources and Python tools use the repository's formatting rules;
   the vendored runtime and miniz retain their upstream style.
 - The NCA/RomFS builder and installer are local implementations of published
   Switchbrew formats. No sphaira implementation code is included.
 - `vendor/forwarder/README.md` records the loader's hashes and provenance.
 
-`tools/licenses.py` bundles notices inside the NRO and in public release archives.
+`tools.licenses` bundles notices inside the NRO and in public release archives.
 The game libraries, managed game assemblies and resources are read from each
 user's APK. They are not included in the source tree or public release archives.
 The supplied cover icon is game artwork and is not covered by the MIT code license.

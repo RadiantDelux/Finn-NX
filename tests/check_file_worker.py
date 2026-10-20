@@ -26,8 +26,8 @@ from unicorn.arm_const import (
     UC_ARM_REG_CPSR,
     UC_CPU_ARM_MAX,
 )
-from arm32 import Arm32
-from check_kuser import ROOT, PAYLOAD, GAME, SCRATCH, load, put, word, check
+from tests.arm32 import Arm32
+from tests.check_kuser import ROOT, PAYLOAD, GAME, SCRATCH, load, put, word, check
 
 WORKER = 0x38CCCC
 JOB, BUFFER, DEQUE, BMUTEX = [SCRATCH + x for x in (0x2000, 0x3000, 0x4000, 0x5000)]

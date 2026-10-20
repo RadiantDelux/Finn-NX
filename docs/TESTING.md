@@ -1,6 +1,6 @@
 # Testing
 
-Gameplay and audio have been reported working on the user's Switch. Local
+Gameplay and audio have been reported working on Switch. Local
 automation validates built code and file formats; it does not substitute for
 testing real graphics, audio timing, input latency or HOME behavior.
 
@@ -9,7 +9,7 @@ testing real graphics, audio timing, input latency or HOME behavior.
 After a full build, run:
 
 ```powershell
-python tools/check.py --apk "C:\Games\JumpingFinnTurbo.apk"
+python -m tests.run --apk "C:\Games\JumpingFinnTurbo.apk"
 ```
 
 | Check | What it covers |
@@ -27,7 +27,11 @@ python tools/check.py --apk "C:\Games\JumpingFinnTurbo.apk"
 | `check_file_worker.py` | Original Unity APK reader with the compiled condition-variable shims |
 | `check_controls.ps1` | Compiled managed helper against modeled Unity/game boundaries; 26 scenarios |
 
-Reports and the modeled pointer preview are written under `build/`. The tools
+The check scripts above live in `tests/`, except for the build-time verifier
+in `tools/`. To run one check, use its module name from the project root, for
+example `python -m tests.check_forwarder`.
+
+Reports and the modeled pointer preview are written under `build/`. The tests
 extract only local test inputs from the validated APK. Filesystem, JNI, GPU and
 Switch services are modeled as documented by each report. AES tests use an
 artificial key; they do not read console keys.
@@ -39,15 +43,17 @@ checks and are not distributed in the source repository.
 ## Checks without the game
 
 ```text
-python tools/check_repo.py
-python tools/format.py --check
-cc -std=c11 -Wall -Wextra -Werror -Iruntime/source tools/tests/exefs_checks.c -o build/exefs_checks
+python -m tests.check_repo
+python -m tools.format --check
+cc -std=c11 -Wall -Wextra -Werror -Iruntime/source tests/exefs_checks.c -o build/exefs_checks
 ```
 
 Run the resulting parser test executable. On Windows,
-`./tools/check_controls.ps1 -CompileHelper` compiles the helper against modeled
+`./tests/check_controls.ps1 -CompileHelper` compiles the helper against modeled
 boundaries without an APK. A normal local run uses the helper built against the
 real APK's references instead.
+
+The modeled C# boundaries and scenarios are in `tests/managed/`.
 
 GitHub Actions runs source hygiene, formatting, malformed ExeFS/NPDM checks and
 the modeled managed controls. It does not compile or distribute the commercial

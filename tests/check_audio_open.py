@@ -3,7 +3,7 @@
 import hashlib
 import json
 
-from check_input_apk import DATA, Host, ROOT, check, word
+from tests.check_input_apk import DATA, Host, ROOT, check, word
 
 
 def main():

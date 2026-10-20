@@ -8,7 +8,7 @@ import hashlib
 import json
 import struct
 from PIL import Image
-from check_input_apk import Host, ROOT, put, check
+from tests.check_input_apk import Host, ROOT, put, check
 
 
 def scenario(width, height, enabled=True, visible=True, center=None):

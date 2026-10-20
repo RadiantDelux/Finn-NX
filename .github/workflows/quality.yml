@@ -19,12 +19,12 @@ jobs:
           cache: pip
           cache-dependency-path: requirements-dev.txt
       - run: python -m pip install -r requirements-dev.txt
-      - run: python tools/format.py --check
-      - run: python tools/check_repo.py
+      - run: python -m tools.format --check
+      - run: python -m tests.check_repo
       - name: ExeFS and NPDM bounds
         run: |
           mkdir -p build
-          cc -std=c11 -Wall -Wextra -Werror -Iruntime/source tools/tests/exefs_checks.c -o build/exefs_checks
+          cc -std=c11 -Wall -Wextra -Werror -Iruntime/source tests/exefs_checks.c -o build/exefs_checks
           ./build/exefs_checks
   managed-controls:
     runs-on: windows-latest
@@ -32,4 +32,4 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Controls against modeled game boundaries
         shell: pwsh
-        run: ./tools/check_controls.ps1 -CompileHelper
+        run: ./tests/check_controls.ps1 -CompileHelper

@@ -1,6 +1,6 @@
 """Assemble the notices shipped with standalone NROs and release archives."""
 
-from project import ROOT
+from tools.project import ROOT
 
 
 def license_notices() -> str:

@@ -7,8 +7,8 @@ import shutil
 import zipfile
 from pathlib import Path
 
-from licenses import license_notices
-from project import ROOT, VERSION, validate_apk
+from tools.licenses import license_notices
+from tools.project import ROOT, VERSION, validate_apk
 
 
 def main():

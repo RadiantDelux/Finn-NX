@@ -6,7 +6,7 @@ Read [BUILDING.md](docs/BUILDING.md), [ARCHITECTURE.md](docs/ARCHITECTURE.md) an
 
 ## Development
 
-- Use `python tools/format.py` for maintained C, headers, C# and Python tools.
+- Use `python -m tools.format` for maintained C, headers, C# and Python tools.
 - Keep upstream notices intact. Avoid unrelated formatting of `runtime/` and
   `vendor/`; document substantive runtime changes in `THIRD_PARTY.md`.
 - Name controller actions by behavior rather than by their physical button.
@@ -26,5 +26,5 @@ Describe the concrete problem, resulting behavior and validation. Include the
 port and Atmosphère versions for console failures. Attach only relevant logs,
 after removing any personal details; do not attach the APK or saved games.
 
-Public release archives are produced by `python tools/package.py` without
+Public release archives are produced by `python -m tools.package` without
 `--local-apk`. Verify their SHA-256 and contents before publishing.

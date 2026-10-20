@@ -7,7 +7,7 @@ import sys
 import zipfile
 
 from pathlib import Path
-from project import ROOT, validate_apk
+from tools.project import ROOT, validate_apk
 
 
 def main():
@@ -21,22 +21,20 @@ def main():
     with zipfile.ZipFile(apk) as archive:
         unity.write_bytes(archive.read("lib/armeabi-v7a/libunity.so"))
     tests = [
-        ("verify_build.py", []),
-        ("check_input_apk.py", [str(apk)]),
-        ("check_cursor.py", []),
-        ("check_audio_open.py", []),
-        ("check_menu_launch.py", []),
-        ("check_forwarder.py", []),
-        ("check_kuser.py", [str(unity)]),
-        ("check_display.py", [str(unity)]),
-        ("check_physx_math.py", [str(unity)]),
-        ("check_audio.py", [str(unity)]),
-        ("check_file_worker.py", [str(unity)]),
+        ("tools.verify_build", []),
+        ("tests.check_input_apk", [str(apk)]),
+        ("tests.check_cursor", []),
+        ("tests.check_audio_open", []),
+        ("tests.check_menu_launch", []),
+        ("tests.check_forwarder", []),
+        ("tests.check_kuser", [str(unity)]),
+        ("tests.check_display", [str(unity)]),
+        ("tests.check_physx_math", [str(unity)]),
+        ("tests.check_audio", [str(unity)]),
+        ("tests.check_file_worker", [str(unity)]),
     ]
-    for script, arguments in tests:
-        subprocess.run(
-            [sys.executable, str(ROOT / "tools" / script), *arguments], cwd=ROOT, check=True
-        )
+    for module, arguments in tests:
+        subprocess.run([sys.executable, "-m", module, *arguments], cwd=ROOT, check=True)
     shell = shutil.which("pwsh") or shutil.which("powershell")
     if not shell:
         raise RuntimeError("PowerShell is required for the managed controls check")
@@ -47,7 +45,7 @@ def main():
             "-ExecutionPolicy",
             "Bypass",
             "-File",
-            str(ROOT / "tools/check_controls.ps1"),
+            str(ROOT / "tests/check_controls.ps1"),
         ],
         check=True,
     )

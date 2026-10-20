@@ -29,8 +29,8 @@ from unicorn.arm_const import (
     UC_ARM_REG_FPEXC,
     UC_CPU_ARM_MAX,
 )
-from arm32 import Arm32
-from check_kuser import (
+from tests.arm32 import Arm32
+from tests.check_kuser import (
     ROOT,
     PAYLOAD,
     GAME,
