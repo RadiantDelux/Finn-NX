@@ -1,0 +1,7 @@
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+vendor/forwarder/main binary
+vendor/forwarder/main.npdm binary
+runtime/** linguist-vendored
+vendor/** linguist-vendored

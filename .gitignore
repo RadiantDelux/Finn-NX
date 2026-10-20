@@ -1,0 +1,45 @@
+# Local inputs, caches and diagnostics
+.deps/
+.analysis/
+.reference/
+.venv/
+__pycache__/
+.ruff_cache/
+*.apk
+*.ipa
+*.so
+*.dll
+*.keys
+*.log
+*.bmp
+*.zip
+*.7z
+*.rar
+config.ini
+title_id.txt
+data/
+
+# Build outputs
+/build/
+/dist/
+/portlibs32/
+/launcher/build/
+/launcher/romfs/
+/launcher/source/finn_auto_assets.h
+*.elf
+*.nsp
+*.nro
+*.nca
+*.nacp
+*.build
+*.o
+*.a
+*.d
+*.map
+
+# Editors
+.vs/
+.vscode/
+.idea/
+*.swp
+*~

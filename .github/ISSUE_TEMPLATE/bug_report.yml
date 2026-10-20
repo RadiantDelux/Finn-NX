@@ -1,0 +1,39 @@
+name: Bug report / Reportar un fallo
+description: Report a reproducible Finn NX problem.
+title: "[Bug] "
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Finn NX version
+      placeholder: 0.1.10
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: Atmosphère and system versions
+    validations:
+      required: true
+  - type: dropdown
+    id: launch
+    attributes:
+      label: Launch method
+      options:
+        - HOME forwarder
+        - Album / hbmenu
+        - sphaira
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps, expected behavior and actual result
+      description: Mention handheld/docked mode and whether this is a first install or an update.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Attach forwarder-install.log, debug.log or crash.log as appropriate. Do not attach APKs, saves or keys.

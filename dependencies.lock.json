@@ -1,0 +1,10 @@
+{
+  "libnx32": {
+    "url": "https://github.com/aks796/libnx32/releases/download/4.12.0/libnx32.zip",
+    "sha256": "8d3bedba10ba02506c7f991858c2ada2a4a31f20681a6b2f8c92916e99e0ae6e"
+  },
+  "mesa32": {
+    "url": "https://github.com/aks796/mesa32/releases/download/release/mesa32.zip",
+    "sha256": "55b331856a24bebf2bc0b8bb11061edd667b61f1351ce7da1b9cf31fd03a53c6"
+  }
+}

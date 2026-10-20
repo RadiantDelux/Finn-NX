@@ -1,0 +1,7 @@
+ruff==0.14.2
+clang-format==21.1.6
+pyelftools==0.33
+capstone==5.0.9
+unicorn==2.1.4
+cryptography==50.0.2
+Pillow==13.0.0
